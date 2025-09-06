@@ -74,29 +74,26 @@
             margin-top: 20px;
         }
 
-        .site-button {
+        .site-link {
             display: block;
-            width: 100%;
             padding: 15px 20px;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            border: none;
+            text-decoration: none;
             border-radius: 10px;
             text-align: center;
             font-weight: bold;
             font-size: 1em;
-            font-family: inherit;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .site-button:hover {
+        .site-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
             background: linear-gradient(45deg, #ff5252, #d32f2f);
         }
 
-        .site-button:active {
+        .site-link:active {
             transform: translateY(0);
         }
 
@@ -153,46 +150,42 @@
         <div class="blocked-sites">
             <h2>🚫 Sites Bloqueados</h2>
             <p style="text-align: center; margin-bottom: 20px;">
-                Os botões abaixo redirecionam para sites reais que estão bloqueados pelo sistema de controle parental. 
+                Os links abaixo redirecionam para sites reais que estão bloqueados pelo sistema de controle parental. 
                 Clique em qualquer um deles para testar o bloqueio em tempo real:
             </p>
             
             <div class="sites-grid">
-                <button class="site-button" onclick="abrirSite('https://www.instagram.com/')">
+                <a href="https://www.instagram.com/" class="site-link" target="_blank">
                     📸 Instagram
-                </button>
-                <button class="site-button" onclick="abrirSite('https://x.com/')">
+                </a>
+                <a href="https://x.com/" class="site-link" target="_blank">
                     🐦 X.com (Twitter)
-                </button>
-                <button class="site-button" onclick="abrirSite('https://www.facebook.com/')">
+                </a>
+                <a href="https://www.facebook.com/" class="site-link" target="_blank">
                     📘 Facebook
-                </button>
-                <button class="site-button" onclick="abrirSite('https://www.twitch.tv/')">
+                </a>
+                <a href="https://www.twitch.tv/" class="site-link" target="_blank">
                     🎮 Twitch (Jogos)
-                </button>
-                <button class="site-button" onclick="abrirSite('https://www.tiktok.com/')">
+                </a>
+                <a href="https://www.tiktok.com/" class="site-link" target="_blank">
                     🎵 TikTok
-                </button>
-                <button class="site-button" onclick="abrirSite('https://www.roblox.com/')">
+                </a>
+                <a href="https://www.roblox.com/" class="site-link" target="_blank">
                     🎮 Roblox
-                </button>
-                <button class="site-button" onclick="abrirSite('https://discord.com/')">
+                </a>
+                <a href="https://discord.com/" class="site-link" target="_blank">
                     💬 Discord
-                </button>
-                <button class="site-button" onclick="abrirSite('https://www.bet365.com/')">
+                </a>
+                <a href="https://www.bet365.com/" class="site-link" target="_blank">
                     🎰 Sites de Apostas
-                </button>
+                </a>
             </div>
         </div>
 
         <div class="warning">
-            ⚠️ <strong>Aviso:</strong> Os botões acima redirecionam para os sites reais. 
+            ⚠️ <strong>Aviso:</strong> Os links acima redirecionam para os sites reais. 
             Se estiverem bloqueados pela configuração de rede, você verá uma página de erro ou timeout.
         </div>
     </div>
-
-    <script>
-        console.log('Controle Parental - Links diretos configurados');
-    </script>
 </body>
 </html>
