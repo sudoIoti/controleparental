@@ -158,10 +158,7 @@
             </p>
             
             <div class="sites-grid">
-             <a class="site-button" href="https://www.instagram.com/" target="_blank">
-    📸 Instagram
-</a>
-
+                <button class="site-button" onclick="abrirSite('https://www.instagram.com/')">
                     📸 Instagram
                 </button>
                 <button class="site-button" onclick="abrirSite('https://x.com/')">
@@ -195,26 +192,7 @@
     </div>
 
     <script>
-        function abrirSite(url) {
-            console.log('Abrindo site:', url);
-            try {
-                // Tenta abrir em nova aba
-                const novaAba = window.open(url, '_blank', 'noopener,noreferrer');
-                
-                if (!novaAba) {
-                    // Se bloqueado popup, tenta na mesma aba
-                    console.log('Popup bloqueado, redirecionando na mesma aba');
-                    window.location.href = url;
-                }
-            } catch (error) {
-                console.error('Erro ao abrir site:', error);
-                // Fallback: redireciona na mesma aba
-                window.location.href = url;
-            }
-        }
-
-        console.log('Controle Parental - Sistema carregado com sucesso');
+        console.log('Controle Parental - Links diretos configurados');
     </script>
 </body>
 </html>
-
