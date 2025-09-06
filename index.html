@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Parental - Demonstração</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .description {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .blocked-sites {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .blocked-sites h2 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .site-link {
+            display: block;
+            padding: 15px 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .site-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            border-color: #ff4757;
+        }
+
+        .site-link:active {
+            transform: translateY(0);
+        }
+
+        .warning {
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(46, 204, 113, 0.2);
+            border-radius: 10px;
+            border: 2px solid #2ecc71;
+        }
+
+        .blocked-message {
+            display: none;
+        }
+
+        .overlay {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Controle Parental</h1>
+        <div class="subtitle">Demonstração de Projeto de Redes de Computadores</div>
+        
+        <div class="description">
+            <p>Este projeto tem como objetivo demonstrar como funciona um sistema de <strong>Controle Parental</strong> em redes de computadores. O controle parental é uma ferramenta essencial para proteger menores de idade do acesso a conteúdo inadequado na internet.</p>
+            <br>
+            <p>Através de configurações de rede, filtragem de DNS e bloqueio de URLs, é possível restringir o acesso a determinados sites e categorias de conteúdo, garantindo um ambiente digital mais seguro.</p>
+        </div>
+
+        <div class="status">
+            <strong>Status do Sistema:</strong> ✅ Controle Parental ATIVO
+        </div>
+
+        <div class="blocked-sites">
+            <h2>🚫 Sites Bloqueados</h2>
+            <p style="text-align: center; margin-bottom: 20px;">
+                Os links abaixo estão configurados para serem bloqueados pelo sistema de controle parental. 
+                Clique em qualquer um deles para ver a demonstração do bloqueio:
+            </p>
+            
+            <div class="sites-grid">
+                <a href="#" class="site-link" onclick="showBlockedMessage('Instagram', 'instagram.com')">
+                    📸 Instagram
+                </a>
+                <a href="#" class="site-link" onclick="showBlockedMessage('X (Twitter)', 'x.com')">
+                    🐦 X.com (Twitter)
+                </a>
+                <a href="#" class="site-link" onclick="showBlockedMessage('Facebook', 'facebook.com')">
+                    📘 Facebook
+                </a>
+                <a href="#" class="site-link" onclick="showBlockedMessage('Jogos Online', 'jogos.com')">
+                    🎮 Sites de Jogos
+                </a>
+                <a href="#" class="site-link" onclick="showBlockedMessage('TikTok', 'tiktok.com')">
+                    🎵 TikTok
+                </a>
+                <a href="#" class="site-link" onclick="showBlockedMessage('Discord', 'discord.com')">
+                    🎮 Discord
+                </a>
+            </div>
+        </div>
+
+        <div class="warning">
+            ⚠️ <strong>Aviso:</strong> Esta é uma demonstração educativa. Em um ambiente real, 
+            estes sites seriam bloqueados automaticamente pelo sistema de rede configurado.
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="blocked-message" id="blockedMessage">
+        <h3>🚫 ACESSO BLOQUEADO</h3>
+        <p id="blockedText"></p>
+        <p><strong>Motivo:</strong> Site restrito pelo Controle Parental</p>
+        <p><em>Este site foi bloqueado para proteger menores de idade.</em></p>
+        <button class="close-btn" onclick="hideBlockedMessage()">Fechar</button>
+    </div>
+
+    <script>
+        // Script removido - agora os links redirecionam diretamente
+        console.log("Controle Parental - Links configurados para redirecionamento direto");
+    </script>
+</body>
+</html>
