@@ -74,27 +74,29 @@
             margin-top: 20px;
         }
 
-        .site-link {
+        .site-button {
             display: block;
+            width: 100%;
             padding: 15px 20px;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 10px;
             text-align: center;
             font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            font-size: 1em;
+            font-family: inherit;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .site-link:hover {
+        .site-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-            border-color: #ff4757;
+            background: linear-gradient(45deg, #ff5252, #d32f2f);
         }
 
-        .site-link:active {
+        .site-button:active {
             transform: translateY(0);
         }
 
@@ -115,14 +117,6 @@
             background: rgba(46, 204, 113, 0.2);
             border-radius: 10px;
             border: 2px solid #2ecc71;
-        }
-
-        .blocked-message {
-            display: none;
-        }
-
-        .overlay {
-            display: none;
         }
 
         @media (max-width: 600px) {
@@ -159,60 +153,64 @@
         <div class="blocked-sites">
             <h2>🚫 Sites Bloqueados</h2>
             <p style="text-align: center; margin-bottom: 20px;">
-                Os links abaixo estão configurados para serem bloqueados pelo sistema de controle parental. 
-                Clique em qualquer um deles para ver a demonstração do bloqueio:
+                Os botões abaixo redirecionam para sites reais que estão bloqueados pelo sistema de controle parental. 
+                Clique em qualquer um deles para testar o bloqueio em tempo real:
             </p>
             
             <div class="sites-grid">
-                <a href="#" class="site-link" onclick="showBlockedMessage('Instagram', 'instagram.com')">
+                <button class="site-button" onclick="abrirSite('https://www.instagram.com/')">
                     📸 Instagram
-                </a>
-                <a href="#" class="site-link" onclick="showBlockedMessage('X (Twitter)', 'x.com')">
+                </button>
+                <button class="site-button" onclick="abrirSite('https://x.com/')">
                     🐦 X.com (Twitter)
-                </a>
-                <a href="#" class="site-link" onclick="showBlockedMessage('Facebook', 'facebook.com')">
+                </button>
+                <button class="site-button" onclick="abrirSite('https://www.facebook.com/')">
                     📘 Facebook
-                </a>
-                <a href="#" class="site-link" onclick="showBlockedMessage('Jogos Online', 'jogos.com')">
-                    🎮 Sites de Jogos
-                </a>
-                <a href="#" class="site-link" onclick="showBlockedMessage('TikTok', 'tiktok.com')">
+                </button>
+                <button class="site-button" onclick="abrirSite('https://www.twitch.tv/')">
+                    🎮 Twitch (Jogos)
+                </button>
+                <button class="site-button" onclick="abrirSite('https://www.tiktok.com/')">
                     🎵 TikTok
-                </a>
-                <a href="#" class="site-link" onclick="showBlockedMessage('YouTube Gaming', 'gaming.youtube.com')">
-                    🎮 YouTube Gaming
-                </a>
+                </button>
+                <button class="site-button" onclick="abrirSite('https://www.roblox.com/')">
+                    🎮 Roblox
+                </button>
+                <button class="site-button" onclick="abrirSite('https://discord.com/')">
+                    💬 Discord
+                </button>
+                <button class="site-button" onclick="abrirSite('https://www.bet365.com/')">
+                    🎰 Sites de Apostas
+                </button>
             </div>
         </div>
 
         <div class="warning">
-            ⚠️ <strong>Aviso:</strong> Esta é uma demonstração educativa. Em um ambiente real, 
-            estes sites seriam bloqueados automaticamente pelo sistema de rede configurado.
+            ⚠️ <strong>Aviso:</strong> Os botões acima redirecionam para os sites reais. 
+            Se estiverem bloqueados pela configuração de rede, você verá uma página de erro ou timeout.
         </div>
     </div>
 
-    <div class="overlay" id="overlay"></div>
-    <div class="blocked-message" id="blockedMessage">
-        <h3>🚫 ACESSO BLOQUEADO</h3>
-        <p id="blockedText"></p>
-        <p><strong>Motivo:</strong> Site restrito pelo Controle Parental</p>
-        <p><em>Este site foi bloqueado para proteger menores de idade.</em></p>
-        <button class="close-btn" onclick="hideBlockedMessage()">Fechar</button>
-    </div>
-
     <script>
-        function redirectTo(url) {
-            console.log('Tentando redirecionar para:', url);
-            // Tenta abrir em nova aba primeiro
-            const newWindow = window.open(url, '_blank');
-            
-            // Se não conseguir abrir nova aba (popup bloqueado), redireciona na mesma aba
-            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+        function abrirSite(url) {
+            console.log('Abrindo site:', url);
+            try {
+                // Tenta abrir em nova aba
+                const novaAba = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                if (!novaAba) {
+                    // Se bloqueado popup, tenta na mesma aba
+                    console.log('Popup bloqueado, redirecionando na mesma aba');
+                    window.location.href = url;
+                }
+            } catch (error) {
+                console.error('Erro ao abrir site:', error);
+                // Fallback: redireciona na mesma aba
                 window.location.href = url;
             }
         }
-        
-        console.log("Controle Parental - Sistema de redirecionamento ativo");
+
+        console.log('Controle Parental - Sistema carregado com sucesso');
     </script>
 </body>
 </html>
